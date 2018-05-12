@@ -3,12 +3,8 @@ name = "euler"
 version = "0.1.0"
 authors = ["Pang Tun Jiang <pang.tun.jiang@autodesk.com>"]
 
-[lib]
-name = "euler"
-path = "src/lib/lib.rs"
-
 [[bin]]
 name = "euler-bin"
-path = "main.rs"
+path = "src/main.rs"
 
 [dependencies]
