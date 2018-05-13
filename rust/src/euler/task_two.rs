@@ -6,4 +6,23 @@
 
 pub fn solve() {
 
+    let limit = 4000000;
+    let mut t1 = 1;
+    let mut t2 = 2;
+    let mut sum = 2; // initialize with t2, since it is even
+
+    loop {
+        let t3 = t1 + t2;
+
+        if t3 > limit { break; }
+
+        if t3 % 2 == 0 {
+            sum += t3
+        }
+
+        t1 = t2;
+        t2 = t3;
+    }
+
+    println!("Sum is {}", sum);
 }
