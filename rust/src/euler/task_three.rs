@@ -10,16 +10,30 @@ struct Prime {
     primes : Vec<i64>
 }
 
-// TODO: Create a pseudo-generator for this
+// TODO: Create a pseudo-generator for thiso
+// TODO: https://gist.github.com/glebm/440bbe2fc95e7abee40eb260ec82f85c
+// We're probably not thinking functional enough
 impl Prime {
 
     fn sieve(count : i64) -> Vec<i64> {
 
-        let mut primes = vec![2i64];
         let stopcount = (count as f64).sqrt() as i64;
 
-        for i in 2..count {
-            // TODO:
+        let mut sieve = {
+            let mut sieve = Vec::<bool>::with_capacity(count as usize);
+            for i in 0..count {
+                if i % 2 != 0 {
+                    sieve.push(false);
+                } else {
+                    sieve.push(true);
+                }
+            }
+            sieve
+        };
+        let mut primes = vec![2 as i64];
+
+        for i in sieve {
+
         }
 
         primes
