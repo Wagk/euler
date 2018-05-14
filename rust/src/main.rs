@@ -1,5 +1,5 @@
 mod euler;
 
 fn main() {
-    euler::task_two::solve()
+    euler::task_three::solve()
 }
