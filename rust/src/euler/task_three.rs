@@ -15,44 +15,43 @@ struct Prime {
 // We're probably not thinking functional enough
 impl Prime {
 
-    fn sieve(count : i64) -> Vec<i64> {
+    fn sieve(count : usize) -> Vec<usize> {
 
-        let stopcount = (count as f64).sqrt() as i64;
+        let stopcount: usize = (count as f64).sqrt() as usize + 1;
 
-        let mut sieve = {
-            let mut sieve = Vec::<bool>::with_capacity(count as usize);
-            for i in 0..count {
-                if i % 2 != 0 {
-                    sieve.push(false);
-                } else {
-                    sieve.push(true);
+        println!("count {}, stopcount {}", count, stopcount);
+
+        //Initialize a range to what we want
+        let mut sieve = (0..count)
+            .map(|num| true)
+            .collect::<Vec<bool>>();
+
+        for i in 2..stopcount {
+            if sieve[i] == true {
+                let mut j = i * i;
+                while j < count {
+                    sieve[j] = false;
+                    j += i;
                 }
             }
-            sieve
-        };
-        let mut primes = vec![2 as i64];
-
-        for i in sieve {
-
         }
 
-        primes
+        sieve
+            .into_iter()
+            .enumerate()
+            .skip(2)
+            .filter_map(|(i, val)| {if val == true {Some(i)} else {None}})
+            .collect::<Vec<usize>>()
     }
-
-
-    fn generate(&self, until: i32) {
-
-    }
-
-    fn next_prime() {
-
-    }
-
 }
 
 pub fn solve() {
     // DEBUG: Remove this when done
-    Prime::sieve(300);
+    let primes = Prime::sieve(300);
+
+    for p in primes {
+        println!("{}", p);
+    }
 
     let number = 600851475143;
 }
