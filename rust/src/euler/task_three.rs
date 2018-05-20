@@ -49,8 +49,40 @@ pub fn solve() {
     // DEBUG: Remove this when done
     let primes = Prime::sieve(300);
 
+    //DEBUG: remove this when done
     for p in primes {
         println!("{}", p);
+    }
+
+    // going down the list of primes:
+    // - Keep dividing by that prime, tracking how many times the division
+    // happened
+    // - Take the remainder, move to next prime, and repeat former step
+    // - There should only be a remainder of 1 since all integers have a unique
+    // prime factorisation
+    //
+    // assert that the factors multiply to that number
+
+    let mut number = 600851475143;
+
+    let mut factors: Vec<usize>;
+
+    for p in primes {
+        loop {
+            let div = number % p;
+            match div {
+                0 => { // keep dividing the the term
+                    factors.push(p);
+                    number = div;
+                },
+                number => { // can't divide anymore, move on
+                    break;
+                },
+                _ => {
+
+                }
+            }
+        }
     }
 
     let number = 600851475143;
